@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import AuthorUser
+from blogApp.serializers import PostBlogSerializer
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import smart_str, force_str, force_bytes, DjangoUnicodeDecodeError
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
@@ -39,7 +40,7 @@ class AuthorLoginSerializer(serializers.ModelSerializer):
 class AuthorProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = AuthorUser
-        fields = ['id', 'Author_firstName', 'Author_lastName', 'Author_email']
+        fields = "__all__"
 
 
 class AuthorChangePasswordSerializer(serializers.ModelSerializer):
