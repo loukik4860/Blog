@@ -22,20 +22,29 @@ class TagSerializer(serializers.ModelSerializer):
 
 
 class BlogModelSerializer(serializers.ModelSerializer):
+    author = serializers.HiddenField(default=serializers.CurrentUserDefault())
     blogImage = BlogImageSerializer()
     tag = TagSerializer(many=True)
-    author = AuthorProfileSerializer()
+
     class Meta:
         model = BlogModel
-        fields = ['id', 'title', 'content', 'publish_date', 'is_published', 'created_at', 'updated_at', 'author',
-                  'blogImage', 'tag']
-
-
+        fields = ['id', 'title', 'content', 'publish_date', 'is_published', 'created_at', 'updated_at',
+                  'blogImage', 'tag', 'author']
 
 
 class PostBlogSerializer(serializers.ModelSerializer):
-    author = serializers.HiddenField(default=serializers.CurrentUserDefault())
-    post=AuthorProfileSerializer(many=True)
+    post = AuthorProfileSerializer(many=True)
+
     class Meta:
         model = AuthorUser
-        fields = ['Author_email','Author_firstName','Author_lastName','is_author','is_active','is_admin','created_at','updated_at','post','author']
+        fields = ['Author_email', 'Author_firstName', 'Author_lastName', 'is_author', 'is_active', 'is_admin',
+                  'created_at', 'updated_at', 'post', 'author']
+
+
+class AuthorAllDetailsSerializer(serializers.ModelSerializer):
+    blog_posts = BlogModelSerializer(many=True)
+
+    class Meta:
+        model = AuthorUser
+        fields = ['Author_email', 'Author_firstName', 'Author_lastName', 'is_author', 'is_active', 'is_admin',
+                  'created_at', 'updated_at', 'blog_posts']
