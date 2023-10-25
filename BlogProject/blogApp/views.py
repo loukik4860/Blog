@@ -1,5 +1,5 @@
 from rest_framework import views
-from .serializers import PostBlogSerializer, BlogImageSerializer, TagSerializer,BlogModelSerializer
+from .serializers import BlogImageSerializer, TagSerializer, BlogModelSerializer, AuthorProfileSerializer
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView, ListAPIView
 from .models import BlogModel, BlogImage, Tag
 from AuthApp.models import AuthorUser
@@ -59,8 +59,11 @@ class PostBlogDetailsView(RetrieveUpdateDestroyAPIView):
     permission_classes = [IsAuthor]
 
 
-# class AuthorPostView(ListAPIView):
-#     queryset = AuthorUser.objects.all()
-#     serializer_class = AuthorProfileSer
-#     authentication_classes = [JWTAuthentication]
-#     permission_classes = [IsAuthor]
+class AuthorPostView(ListAPIView):
+    queryset = AuthorUser.objects.all()
+    serializer_class = AuthorProfileSerializer
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAuthor]
+
+
+# class

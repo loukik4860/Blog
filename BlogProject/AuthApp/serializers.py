@@ -40,7 +40,7 @@ class AuthorLoginSerializer(serializers.ModelSerializer):
 class AuthorProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = AuthorUser
-        fields = "__all__"
+        fields = ['Author_email','Author_firstName','Author_lastName','is_author','is_active','is_admin','created_at','updated_at']
 
 
 class AuthorChangePasswordSerializer(serializers.ModelSerializer):
