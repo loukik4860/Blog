@@ -12,8 +12,8 @@ class BlogModelAdmin(admin.ModelAdmin):
 
 @admin.register(BlogImage)
 class BlogImageAdmin(admin.ModelAdmin):
-    list_display = ('caption',)
+    list_display = ('id','image','caption',)
 
 @admin.register(Tag)
 class TagAdmin(admin.ModelAdmin):
-    list_display = ('name',)
+    list_display = ('id','name',)

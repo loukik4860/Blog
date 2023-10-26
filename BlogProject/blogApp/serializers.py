@@ -24,14 +24,14 @@ class TagSerializer(serializers.ModelSerializer):
 class BlogModelSerializer(serializers.ModelSerializer):
     author = serializers.HiddenField(default=serializers.CurrentUserDefault())
 
-    blogImage = BlogImageSerializer()
-    tag = TagSerializer(many=True)
+    # blogImage = BlogImageSerializer()
+    # tag = TagSerializer(many=True)
 
     class Meta:
         model = BlogModel
         fields = ['id', 'title', 'content', 'publish_date', 'is_published', 'created_at', 'updated_at',
-                  'blogImage', 'tag','author']
-
+                  'author']
+        # 'blogImage', 'tag',
 
 
 class PostBlogSerializer(serializers.ModelSerializer):

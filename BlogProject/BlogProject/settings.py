@@ -150,7 +150,7 @@ REST_FRAMEWORK = {
     ),
     # "DEFAULT_RENDERER_CLASSES": ('rest_framework.renderers.JSONRenderer',)
     'DEFAULT_THROTTLE_RATES' : {
-        'anon': '2/day',
+        'anon': '10/day',
         'user': '5/hour'
     }
 }

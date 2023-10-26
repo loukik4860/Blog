@@ -8,7 +8,7 @@ urlpatterns = [
     path('tagpost/<int:pk>/', PostTagDetailsView.as_view(), name="postTagDetails"),
     path('postblog/',PostBlogView.as_view(),name="postblog"),
     path('postblog/<int:pk>/',PostBlogDetailsView.as_view(),name="postblogDetails"),
-    path('authorlist/',AuthorPostView.as_view(),name="authorPost"),
-    path('authorDetails/',AuthorAllDetails.as_view(),name="authorDetails"),
-    path('authorDetails/<int:pk>/',AuthorDetails.as_view(),name="authorDetails"),
+    path('authorlist/',AuthorPostView.as_view(),name="authorPost"), #Author List
+    path('authorDetails/',AuthorAllDetails.as_view(),name="authorDetails"), # Retrieve data of all author
+    path('authorDetails/<int:pk>/',AuthorDetails.as_view(),name="authorDetails"), #Retrieve Detals of Author
 ]
