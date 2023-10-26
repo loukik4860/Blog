@@ -5,9 +5,7 @@ DRF JWT LOGIN + Registration + Login + changePassword + reset password + reset p
 This README provides an overview of the Django Blog Project, including its structure, components, and key functionalities.
 
 
-
-
-   ##Project Overview
+## Project Overview
 
 This Django project is a simple blog application with user registration,
 login, user profile management, and password reset functionality. 

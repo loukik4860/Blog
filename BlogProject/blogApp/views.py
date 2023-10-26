@@ -7,13 +7,13 @@ from AuthApp.models import AuthorUser
 from rest_framework.permissions import IsAuthenticated,AllowAny
 from .permissions import IsAuthor
 from rest_framework_simplejwt.authentication import JWTAuthentication
-
+from rest_framework.throttling import AnonRateThrottle,UserRateThrottle
 
 class PostBlogImageView(ListCreateAPIView):
     queryset = BlogImage.objects.all()
     serializer_class = BlogImageSerializer
     authentication_classes = [JWTAuthentication]
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthor]
 
     def create(self, request, *args, **kwargs):
         return super().create(request, *args, **kwargs)
@@ -41,7 +41,7 @@ class PostTagDetailsView(RetrieveUpdateDestroyAPIView):
     serializer_class = TagSerializer
     authentication_classes = [JWTAuthentication]
     permission_classes = [IsAuthor]
-
+    throttle_classes = [AnonRateThrottle]
 
 class PostBlogView(ListCreateAPIView):
     queryset = BlogModel.objects.all()
@@ -83,3 +83,4 @@ class AuthorDetails(RetrieveAPIView):
     serializer_class = AuthorAllDetailsSerializer
     authentication_classes = [JWTAuthentication]
     permission_classes = [AllowAny]
+    throttle_classes = [AnonRateThrottle,UserRateThrottle]
