@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     "rest_framework",
     "corsheaders",
+    "django_filters",
     'AuthApp',
     'blogApp'
 ]
@@ -152,7 +153,9 @@ REST_FRAMEWORK = {
     'DEFAULT_THROTTLE_RATES' : {
         'anon': '10/day',
         'user': '5/hour'
-    }
+    },
+    'DEFAULT_FILTER_BACKENDS':['django_filters.rest_framework.DjangoFilterBackend']
+
 }
 
 

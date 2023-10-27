@@ -1,0 +1,38 @@
+1.
+email :- loukikhajare30@gmail.com
+password :- loukik12
+"token": {
+        "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY5ODQ3MTMwMCwiaWF0IjoxNjk4Mzg0OTAwLCJqdGkiOiI0NmFiNDg2ZTc1MzU0ZjkwYjhlNjA5YjczOWQwNDg5NiIsInVzZXJfaWQiOjd9.PN74r1AA6PyaBvKIG8GgE9gv7Aly3VUXEOyv2yW3BuA",
+        "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk4Mzk5MzAwLCJpYXQiOjE2OTgzODQ5MDAsImp0aSI6ImQyMDBlYTNmZDRlNDQ1MmE4Njg1ZjIzZjBiMzM3MGQzIiwidXNlcl9pZCI6N30.owETTO5F3GRoTP-p1nkM1OABDJvxT_WAAavhCTNSjo4"
+    },
+
+2.
+email :- loukikhajare31@gmail.com
+password :- loukik1234
+{
+    "token": {
+        "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY5ODQ3MjA5MCwiaWF0IjoxNjk4Mzg1NjkwLCJqdGkiOiI5MjdlZjM0NmM5ZTI0OWQzYmQ4Y2Y2MjVjYjBhMTFhNiIsInVzZXJfaWQiOjh9.aPDxjx2rGbUrj5pDNlJNKvteD0YZ584CUsFuZsdmf_8",
+        "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk4NDAwMDkwLCJpYXQiOjE2OTgzODU2OTAsImp0aSI6ImZhNzhkMmMxYmU3ZDQwZmM5YzVlZDE3Yzk0MWU3MTYwIiwidXNlcl9pZCI6OH0.HKMntCQineIvY79ONfmxh1SisnwYxKJT0BbhzF_sgII"
+    },
+    "msg": "registration Successful"
+}
+11.
+email :- sandeepmaske@gmail.com
+password :- loukik1234
+{
+    "token": {
+        "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY5ODQ3MjQ0OSwiaWF0IjoxNjk4Mzg2MDQ5LCJqdGkiOiI1ZTRhODk3M2YzNzk0M2IyOGE1ZDg1NTAzN2EwNTk1YSIsInVzZXJfaWQiOjExfQ.l0XFHBRGKBhN5p0qtR0ZEKwRcQt3500zmbWKAGWBNm4",
+        "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk4NDAwNDQ5LCJpYXQiOjE2OTgzODYwNDksImp0aSI6IjBmMzE3NjVhZWQxYzQ5YzFiN2I1MjgyZTA3ZTVlYjFlIiwidXNlcl9pZCI6MTF9.kp7izYsQPsAoQQBQoziOkfa9UHJvQA9Jbq-YPd7lgmo"
+    },
+    "msg": "registration Successful"
+}
+12.
+email :- shamambule@gmail.com
+password :- loukik1234
+{
+    "token": {
+        "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY5ODQ3MjU1NywiaWF0IjoxNjk4Mzg2MTU3LCJqdGkiOiIyNDNjNDBlNDY3OTk0Yjg5YTY3NjhjMzVmOGNhNGI4MiIsInVzZXJfaWQiOjEyfQ.HcWxcMQZAVaQrpS_SM-e0z99ku0D5OWry-BxD_wouu8",
+        "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk4NDAwNTU3LCJpYXQiOjE2OTgzODYxNTcsImp0aSI6ImJiYjVkYjM1YjVhMDQ1ZDFiOGIxYWQwZTI2MDIxNDRhIiwidXNlcl9pZCI6MTJ9.weDteZHJEqV3VqQc5w45Fl_zoX5QBLSd_T_cLxm7m4w"
+    },
+    "msg": "registration Successful"
+}

@@ -23,15 +23,13 @@ class TagSerializer(serializers.ModelSerializer):
 
 class BlogModelSerializer(serializers.ModelSerializer):
     author = serializers.HiddenField(default=serializers.CurrentUserDefault())
-
-    # blogImage = BlogImageSerializer()
-    # tag = TagSerializer(many=True)
+    blogImage = BlogImageSerializer()
+    tag = TagSerializer(many=True)
 
     class Meta:
         model = BlogModel
         fields = ['id', 'title', 'content', 'publish_date', 'is_published', 'created_at', 'updated_at',
-                  'author']
-        # 'blogImage', 'tag',
+                  'author', 'blogImage', 'tag', ]
 
 
 class PostBlogSerializer(serializers.ModelSerializer):
@@ -50,3 +48,11 @@ class AuthorAllDetailsSerializer(serializers.ModelSerializer):
         model = AuthorUser
         fields = ['Author_email', 'Author_firstName', 'Author_lastName', 'is_author', 'is_active', 'is_admin',
                   'created_at', 'updated_at', 'blog_posts']
+
+
+class NestedTagSerializer(serializers.ModelSerializer):
+    tag = BlogModelSerializer(many=True)
+
+    class Meta:
+        model = Tag
+        fields = ['id', 'name','tag']
