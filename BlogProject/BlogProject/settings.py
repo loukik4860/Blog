@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     "corsheaders",
     "django_filters",
     'AuthApp',
-    'blogApp'
+    'blogApp',
+    'ExamApp',
 ]
 
 MIDDLEWARE = [

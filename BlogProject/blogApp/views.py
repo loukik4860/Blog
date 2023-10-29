@@ -58,6 +58,7 @@ class PostBlogView(ListCreateAPIView):  ######
         'title': ['icontains'],
         'content': ['icontains'],
     }
+
     def create(self, request, *args, **kwargs):
         return super().create(request, *args, **kwargs)
 
