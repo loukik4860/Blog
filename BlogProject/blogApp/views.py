@@ -59,6 +59,9 @@ class PostBlogView(ListCreateAPIView):  ######
         'content': ['icontains'],
     }
 
+    def get_queryset(self):
+        return BlogModel.objects.all().order_by('-id')
+
     def create(self, request, *args, **kwargs):
         return super().create(request, *args, **kwargs)
 
@@ -110,3 +113,22 @@ class TagDetailsWithPost(ListAPIView):
     serializer_class = NestedTagSerializer
     authentication_classes = [JWTAuthentication]
     permission_classes = [AllowAny]
+
+
+class SingleTagDetailsWithPost(ListAPIView):
+    serializer_class = NestedTagSerializer
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [AllowAny]
+
+    def get_queryset(self):
+        pk = self.kwargs['id']
+        return Tag.objects.filter(id=pk)
+
+
+class SingleTagBySubject(RetrieveAPIView):
+    serializer_class = NestedTagSerializer
+    lookup_field = 'name'
+
+    def get_queryset(self):
+        subject = self.kwargs['name']
+        return Tag.objects.filter(name=subject)
