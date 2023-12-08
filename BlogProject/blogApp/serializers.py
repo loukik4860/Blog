@@ -12,7 +12,7 @@ class AuthorProfileSerializer(serializers.ModelSerializer):
         return AuthorUser.objects.create(**validated_data)
 
 
-class BlogTitleImageSerializer(serializers.ModelSerializer):
+class BlogTitleImageSerializer(serializers.ModelSerializer):###
     class Meta:
         model = BlogTitleImage
         fields = ['id', 'image', 'caption']
@@ -30,7 +30,7 @@ class BlogImageSerializer(serializers.ModelSerializer):
         return BlogImage.objects.create(**validated_data)
 
 
-class TagSerializer(serializers.ModelSerializer):
+class TagSerializer(serializers.ModelSerializer):  ###
     class Meta:
         model = Tag
         fields = ['id', 'name']
@@ -41,30 +41,14 @@ class TagSerializer(serializers.ModelSerializer):
 
 class BlogModelSerializer(serializers.ModelSerializer):
     author = serializers.HiddenField(default=serializers.CurrentUserDefault())
-    BlogTitleImage = BlogTitleImageSerializer(source="blog_title_image")
-    Tag = TagSerializer(source="tag", many=True)
-
+    Author = AuthorProfileSerializer(source="author",read_only=True)
+    TitleBlog = BlogTitleImageSerializer(source='blog_title_image',read_only=True)
+    Tag = TagSerializer(source='tag',read_only=True)
     class Meta:
         model = BlogModel
         fields = ['id', 'title', 'sub_title', 'content', 'publish_date', 'is_published', 'created_at', 'updated_at',
-                  'author', 'blog_title_image', 'BlogTitleImage' , 'tag','Tag']
+                  'author', 'Author','blog_title_image','TitleBlog','tag','Tag']
 
-    def create(self, validated_data):
-        # Extract and remove related models data from validated_data
-        blog_title_image_data = validated_data.pop('blog_title_image', None)
-        blog_image_data = validated_data.pop('blogImage', None)
-        tag_data = validated_data.pop('tag', None)
-
-        blog_model = BlogModel.objects.create(**validated_data)
-
-        if blog_title_image_data:
-            BlogTitleImage.objects.create(blog_model=blog_model, **blog_title_image_data)
-
-        if tag_data:
-            for tag in tag_data:
-                Tag.objects.create(blog_model=blog_model, **tag)
-
-        return blog_model
 
 
 class PostBlogSerializer(serializers.ModelSerializer):
@@ -100,3 +84,4 @@ class NestedTagSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         return Tag.objects.create(**validated_data)
+

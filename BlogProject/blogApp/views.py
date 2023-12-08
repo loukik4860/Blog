@@ -48,7 +48,7 @@ class PostTagDetailsView(RetrieveUpdateDestroyAPIView):
     throttle_classes = [AnonRateThrottle]
 
 
-class PostBlogView(ListCreateAPIView):  ######
+class PostBlogView(ListCreateAPIView):
     queryset = BlogModel.objects.all()
     serializer_class = BlogModelSerializer
     authentication_classes = [JWTAuthentication]
@@ -63,7 +63,10 @@ class PostBlogView(ListCreateAPIView):  ######
         return BlogModel.objects.all().order_by('-id')
 
     def create(self, request, *args, **kwargs):
-        return super().create(request, *args, **kwargs)
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save(author=self.request.user)  # Assign the authenticated user as the author
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
 class PostBlogDetailsView(RetrieveUpdateDestroyAPIView):
