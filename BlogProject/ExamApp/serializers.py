@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import ExamSectionModel, CommissionModel, ExamModel, NotificationModel, SubjectModel, NotesModel, \
-    CategorisationModel, ChapterModel, TitleImage
+    CategorisationModel, ChapterModel, TitleImage, BulletsPoint
 from blogApp.serializers import TagSerializer
 
 
@@ -70,7 +70,7 @@ class ChapterSerializer(serializers.ModelSerializer):
 class TitleImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = TitleImage
-        fields = ['id','name', 'image', 'caption','created_at', 'updated_at']
+        fields = ['id', 'name', 'image', 'caption', 'created_at', 'updated_at']
 
 
 class NotesSerializer(serializers.ModelSerializer):
@@ -120,4 +120,16 @@ class NotesBySubject(serializers.ModelSerializer):
 class TitleImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = TitleImage
-        fields = ['id','name', 'image', 'caption','created_at', 'updated_at']
+        fields = ['id', 'name', 'image', 'caption', 'created_at', 'updated_at']
+
+
+class BulletsPointSerializer(serializers.ModelSerializer):
+    Tag = TagSerializer(source="tags", many=True, read_only=True)
+    Chapter = ChapterSerializer(source='chapter', many=True, read_only=True)
+
+    class Meta:
+        model = BulletsPoint
+        fields = ['id', 'title', 'content', 'chapter', 'created_at', 'updated_at', 'tags', 'Tag','Chapter']
+
+    def create(self, validated_data):
+        return BulletsPoint.objects.create(**validated_data)

@@ -1,10 +1,10 @@
 from rest_framework import views
 from .serializers import ExamSectionSerializer, CommissionSerializer, ExamSerializer, NotificationSerializer, \
     SubjectSerializer, NotesSerializer, CategorisationSerializer, ChapterSerializer, ExamSerializer, NotesBySubject, \
-    TitleImageSerializer
+    TitleImageSerializer,BulletsPointSerializer
 from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveAPIView, UpdateAPIView, DestroyAPIView
 from .models import ExamSectionModel, CommissionModel, ExamModel, NotificationModel, SubjectModel, NotesModel, \
-    CategorisationModel, ChapterModel, TitleImage
+    CategorisationModel, ChapterModel, TitleImage,BulletsPoint
 from rest_framework.response import Response
 from rest_framework import status
 
@@ -207,3 +207,9 @@ class SubjectNoteRetrieveView(RetrieveAPIView):
         note = NotesModel.objects.get(subject=subject, id=note_id)
 
         return note
+
+
+class BulletsPointCreateView(CreateAPIView):
+    queryset = BulletsPoint.objects.all()
+    serializer_class = BulletsPointSerializer
+

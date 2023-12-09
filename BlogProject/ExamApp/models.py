@@ -105,3 +105,15 @@ class NotesModel(models.Model):
 
     def __str__(self):
         return f"{self.title}"
+
+
+class BulletsPoint(models.Model):
+    title = models.CharField(max_length=200, blank=True, null=True)
+    content = models.TextField(blank=True, null=True)
+    chapter = models.ForeignKey(ChapterModel, on_delete=models.CASCADE, related_name='bullets', blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+    updated_at = models.DateTimeField(auto_now=True, blank=True, null=True)
+    tags = models.ManyToManyField(Tag, blank=True)
+
+    def __str__(self):
+        return f"{self.title}"

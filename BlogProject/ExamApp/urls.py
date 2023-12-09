@@ -3,7 +3,7 @@ from .views import ExamSectionView,ExamSectionCreateView,CommissionListView,Comm
     NotificationCreateView, SubjectListView, SubjectCreateView, NotesListViews, NotesCreateViews, SubjectRetrieveView, \
     CategorisationListView,CategorisationCreateView,ChapterCreateView,ChapterListView, ChapterRetrieveView,CategorisationRetrieveView, \
     ChapterCategoryView,NotesByTagsView,NotesBySubjectView,NotesByChapterView,NoteRetrieveView,CommissionByExamSection,\
-    TitleImageCreate,TitleImageList
+    TitleImageCreate,TitleImageList,BulletsPointCreateView
 
 
 urlpatterns = [
@@ -34,4 +34,5 @@ urlpatterns = [
     path('noteChapter/<int:chapter_id>/', NotesByChapterView.as_view(), name="notesChapter"),
     path('imageCreate/',TitleImageCreate.as_view(),name="ImageCreate"),
     path('imageList/',TitleImageList.as_view(),name="ImageList"),
+    path('bulltesCreate/',BulletsPointCreateView.as_view(),name="bulletsCreate")
 ]

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import ExamSectionModel, CommissionModel, ExamModel, NotificationModel, SubjectModel, CategorisationModel, \
-    ChapterModel, NotesModel, TitleImage
+    ChapterModel, NotesModel, TitleImage,BulletsPoint
 
 
 class ExamSectionAdmin(admin.ModelAdmin):
@@ -52,9 +52,16 @@ class TitleImageAdmin(admin.ModelAdmin):
 
 
 class NotesAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title', 'content', 'chapter','title_image', 'created_at', 'updated_at')
+    list_display = ('id', 'title', 'content', 'chapter', 'title_image', 'created_at', 'updated_at')
     search_fields = ['title', 'content']
     list_filter = ['chapter', 'tags', 'chapter__category__subject']
+    date_hierarchy = 'created_at'
+
+
+class BulltesAdmin(admin.ModelAdmin):
+    list_display = ('id', 'title', 'content', 'chapter', 'created_at', 'updated_at')
+    search_fields = ['title', 'content']
+    list_filter = ['chapter', 'tags', ]
     date_hierarchy = 'created_at'
 
 
@@ -68,3 +75,4 @@ admin.site.register(CategorisationModel, CategorisationAdmin)
 admin.site.register(ChapterModel, ChapterAdmin)
 admin.site.register(NotesModel, NotesAdmin)
 admin.site.register(TitleImage, TitleImageAdmin)
+admin.site.register(BulletsPoint,BulltesAdmin)
