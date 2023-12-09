@@ -70,7 +70,7 @@ class ChapterSerializer(serializers.ModelSerializer):
 class TitleImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = TitleImage
-        fields = ['id', 'image', 'caption']
+        fields = ['id','name', 'image', 'caption','created_at', 'updated_at']
 
 
 class NotesSerializer(serializers.ModelSerializer):
@@ -120,4 +120,4 @@ class NotesBySubject(serializers.ModelSerializer):
 class TitleImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = TitleImage
-        fields = ['id','image','caption']
+        fields = ['id','name', 'image', 'caption','created_at', 'updated_at']

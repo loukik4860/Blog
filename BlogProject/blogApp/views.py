@@ -53,7 +53,6 @@ class PostBlogView(ListCreateAPIView):
     serializer_class = BlogModelSerializer
     authentication_classes = [JWTAuthentication]
     permission_classes = [AllowAny]
-    # filterset_fields = ['title', "content",'blog_posts__tag__name']
     filterset_fields = {
         'title': ['icontains'],
         'content': ['icontains'],
@@ -113,7 +112,7 @@ class AuthorDetailsWithBlogPost_blogImage_tags(RetrieveAPIView):
 
 class TagDetailsWithPost(ListAPIView):
     queryset = Tag.objects.all()
-    serializer_class = NestedTagSerializer
+    serializer_class = TagSerializer
     authentication_classes = [JWTAuthentication]
     permission_classes = [AllowAny]
 
@@ -128,10 +127,10 @@ class SingleTagDetailsWithPost(ListAPIView):
         return Tag.objects.filter(id=pk)
 
 
-class SingleTagBySubject(RetrieveAPIView):
-    serializer_class = NestedTagSerializer
+class SingleTagBySubject(ListAPIView):
+    serializer_class = BlogModelSerializer
     lookup_field = 'name'
 
     def get_queryset(self):
-        subject = self.kwargs['name']
-        return Tag.objects.filter(name=subject)
+        subject_name = self.kwargs['name']
+        return BlogModel.objects.filter(tag__name=subject_name)

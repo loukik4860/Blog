@@ -12,7 +12,7 @@ class AuthorProfileSerializer(serializers.ModelSerializer):
         return AuthorUser.objects.create(**validated_data)
 
 
-class BlogTitleImageSerializer(serializers.ModelSerializer):###
+class BlogTitleImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = BlogTitleImage
         fields = ['id', 'image', 'caption']
@@ -30,7 +30,7 @@ class BlogImageSerializer(serializers.ModelSerializer):
         return BlogImage.objects.create(**validated_data)
 
 
-class TagSerializer(serializers.ModelSerializer):  ###
+class TagSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tag
         fields = ['id', 'name']
@@ -41,14 +41,14 @@ class TagSerializer(serializers.ModelSerializer):  ###
 
 class BlogModelSerializer(serializers.ModelSerializer):
     author = serializers.HiddenField(default=serializers.CurrentUserDefault())
-    Author = AuthorProfileSerializer(source="author",read_only=True)
-    TitleBlog = BlogTitleImageSerializer(source='blog_title_image',read_only=True)
-    Tag = TagSerializer(source='tag',read_only=True)
+    Author = AuthorProfileSerializer(source="author", read_only=True)
+    TitleBlog = BlogTitleImageSerializer(source='blog_title_image', read_only=True)
+    Tag = TagSerializer(source='tag', read_only=True, many=True)
+
     class Meta:
         model = BlogModel
         fields = ['id', 'title', 'sub_title', 'content', 'publish_date', 'is_published', 'created_at', 'updated_at',
-                  'author', 'Author','blog_title_image','TitleBlog','tag','Tag']
-
+                  'author', 'Author', 'blog_title_image', 'TitleBlog', 'tag', 'Tag']
 
 
 class PostBlogSerializer(serializers.ModelSerializer):
@@ -76,12 +76,13 @@ class AuthorAllDetailsSerializer(serializers.ModelSerializer):
 
 
 class NestedTagSerializer(serializers.ModelSerializer):
-    tag = BlogModelSerializer(many=True)
+    blog = BlogModelSerializer(source='tags', many=True)
 
     class Meta:
         model = Tag
-        fields = ['id', 'name', 'tag']
+        fields = ['id', 'name', 'tags', 'blog']
 
     def create(self, validated_data):
         return Tag.objects.create(**validated_data)
+
 

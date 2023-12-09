@@ -3,19 +3,24 @@ from blogApp.models import Tag
 
 
 class TitleImage(models.Model):
+    name = models.CharField(max_length=255, blank=True, null=True)
     image = models.ImageField(upload_to='ExamApp_TitleImages/', null=True, blank=True)
     caption = models.CharField(max_length=255, blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+    updated_at = models.DateTimeField(auto_now=True, blank=True, null=True)
 
     def __str__(self):
         if self.caption:
-            return f"{self.id}--{self.caption[0:15]}"
+            return f"{self.id}--{self.name}"
         else:
-            return f"{self.id}--No Caption"
+            return f"{self.id}"
 
 
 class ExamSectionModel(models.Model):
     name = models.CharField(max_length=200, unique=True, blank=True, null=True)
     abbreviation = models.CharField(max_length=100, unique=True, blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+    updated_at = models.DateTimeField(auto_now=True, blank=True, null=True)
 
     def __str__(self):
         return f"{self.name}"
@@ -96,7 +101,7 @@ class NotesModel(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     updated_at = models.DateTimeField(auto_now=True, blank=True, null=True)
     tags = models.ManyToManyField(Tag, blank=True)
-    title_image = models.OneToOneField(TitleImage,on_delete=models.CASCADE,blank=True, null=True)
+    title_image = models.OneToOneField(TitleImage, on_delete=models.CASCADE, blank=True, null=True)
 
     def __str__(self):
         return f"{self.title}"
