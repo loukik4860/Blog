@@ -1,10 +1,10 @@
 from rest_framework import views
 from .serializers import ExamSectionSerializer, CommissionSerializer, ExamSerializer, NotificationSerializer, \
     SubjectSerializer, NotesSerializer, CategorisationSerializer, ChapterSerializer, ExamSerializer, NotesBySubject, \
-    TitleImageSerializer,BulletsPointSerializer
+    TitleImageSerializer, BulletsPointSerializer
 from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveAPIView, UpdateAPIView, DestroyAPIView
 from .models import ExamSectionModel, CommissionModel, ExamModel, NotificationModel, SubjectModel, NotesModel, \
-    CategorisationModel, ChapterModel, TitleImage,BulletsPoint
+    CategorisationModel, ChapterModel, TitleImage, BulletsPoint
 from rest_framework.response import Response
 from rest_framework import status
 
@@ -64,6 +64,14 @@ class ExamListView(ListAPIView):
 class ExamCreateView(CreateAPIView):
     queryset = ExamModel.objects.all()
     serializer_class = ExamSerializer
+
+
+class ExamListByCommission(ListAPIView):
+    serializer_class = ExamSerializer
+
+    def get_queryset(self):
+        commission_id = self.kwargs['pk']
+        return ExamModel.objects.filter(commission__id=commission_id)
 
 
 # --------------EXAM--------------------
@@ -212,4 +220,3 @@ class SubjectNoteRetrieveView(RetrieveAPIView):
 class BulletsPointCreateView(CreateAPIView):
     queryset = BulletsPoint.objects.all()
     serializer_class = BulletsPointSerializer
-

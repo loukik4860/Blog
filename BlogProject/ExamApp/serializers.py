@@ -4,7 +4,7 @@ from .models import ExamSectionModel, CommissionModel, ExamModel, NotificationMo
 from blogApp.serializers import TagSerializer
 
 
-class ExamSectionSerializer(serializers.ModelSerializer):
+class ExamSectionSerializer(serializers.ModelSerializer):  # Done
     class Meta:
         model = ExamSectionModel
         fields = ['id', 'name', 'abbreviation']
@@ -13,7 +13,7 @@ class ExamSectionSerializer(serializers.ModelSerializer):
         return ExamSectionModel.objects.create(**validated_data)
 
 
-class CommissionSerializer(serializers.ModelSerializer):
+class CommissionSerializer(serializers.ModelSerializer):  # Done
     exam = ExamSectionSerializer(source='examSection', read_only=True)
 
     class Meta:
@@ -129,7 +129,7 @@ class BulletsPointSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = BulletsPoint
-        fields = ['id', 'title', 'content', 'chapter', 'created_at', 'updated_at', 'tags', 'Tag','Chapter']
+        fields = ['id', 'title', 'content', 'chapter', 'created_at', 'updated_at', 'tags', 'Tag', 'Chapter']
 
     def create(self, validated_data):
         return BulletsPoint.objects.create(**validated_data)

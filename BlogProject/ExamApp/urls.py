@@ -3,7 +3,7 @@ from .views import ExamSectionView,ExamSectionCreateView,CommissionListView,Comm
     NotificationCreateView, SubjectListView, SubjectCreateView, NotesListViews, NotesCreateViews, SubjectRetrieveView, \
     CategorisationListView,CategorisationCreateView,ChapterCreateView,ChapterListView, ChapterRetrieveView,CategorisationRetrieveView, \
     ChapterCategoryView,NotesByTagsView,NotesBySubjectView,NotesByChapterView,NoteRetrieveView,CommissionByExamSection,\
-    TitleImageCreate,TitleImageList,BulletsPointCreateView
+    TitleImageCreate,TitleImageList,BulletsPointCreateView,ExamListByCommission
 
 
 urlpatterns = [
@@ -14,6 +14,7 @@ urlpatterns = [
     path('commissionExam/<int:pk>/', CommissionByExamSection.as_view(), name="commissionSection"), #Done
     path('examList/',ExamListView.as_view(),name="examList"),
     path('examCreate/',ExamCreateView.as_view(),name="examCreate"), #Done
+    path('examCommission/<int:pk>/',ExamListByCommission.as_view(),name="exam_by_commission"),
     path('notificationList/',NotificationListView.as_view(),name="NotificationList"),
     path('notificationCreate/',NotificationCreateView.as_view(),name="NotificationCreate"),
     path('subjectList/',SubjectListView.as_view(),name="subjectList"),
