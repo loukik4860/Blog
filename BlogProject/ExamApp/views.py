@@ -209,11 +209,8 @@ class SubjectNoteRetrieveView(RetrieveAPIView):
     def get_object(self):
         subject_id = self.kwargs['subject_id']
         note_id = self.kwargs['note_id']
-
         subject = SubjectModel.objects.get(id=subject_id)
-
         note = NotesModel.objects.get(subject=subject, id=note_id)
-
         return note
 
 
