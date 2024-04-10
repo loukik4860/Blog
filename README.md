@@ -1,5 +1,5 @@
 # Blog
-DRF JWT LOGIN + Registration + Login + changePassword + reset password + reset password by Email
+
 
 # Django Blog Project 
 This README provides an overview of the Django Blog Project, including its structure, components, and key functionalities.
